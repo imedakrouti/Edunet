@@ -1,4 +1,4 @@
 @extends('layouts.Dashboard.app')
 @section('content')
-journaliste index
+student index
 @stop

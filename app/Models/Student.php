@@ -12,10 +12,16 @@ class Student extends Model
         'phone',
         'dateofbirth',
         'address',
-  
+
     ];
 
     public function user(){
+
+         $this->belongTo(user::class);
+    }
+
+    public function course(){
+
         $this->belongTo(user::class);
     }
 

@@ -11,8 +11,9 @@ Route::prefix('dashboard')
 
    /*  Route::resource('journaliste','JouralisteController'); */
 
-   
+
     Route::resource('Student','StudentController');
+    Route::resource('Teacher','TeacherController');
     });
 
 

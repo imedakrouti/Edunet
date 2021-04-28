@@ -21,7 +21,7 @@
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
                         <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">entre student details</span>
-                       
+
                     </div>
                     <!--end::Search Form-->
                     <!--begin::Group Actions-->
@@ -78,19 +78,19 @@
                     <a href="#" class=""></a>
                     <!--end::Button-->
                     <!--begin::Button-->
-                
+
                     <!--end::Button-->
                     <!--begin::Dropdown-->
-                    
+
                     <!--end::Dropdown-->
                 </div>
                 <!--end::Toolbar-->
             </div>
         </div>
         @endsection
-        
+
         <!--end::Subheader-->
-      
+
         <div class="card card-custom gutter-b ">
             <div class="card-header ">
              <div class="card-title">
@@ -107,10 +107,10 @@
                         </svg>
                         <!--end::Svg Icon-->
                     </span>
-                </span> 
-                
+                </span>
+
                 <span class="text-dark mx-3">Ajouter Student </span>
-              
+
               </h3>
              </div>
             </div>
@@ -119,7 +119,7 @@
                     @csrf
                     <div class="form-group  ">
                         <label class="font-size-h6 font-weight-bolder text-dark">First Name</label>
-                        <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="First Name" value="{{ old('first_name') }}">    
+                        <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="First Name" value="{{ old('first_name') }}">
                         @error('first_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="form-group  ">
                         <label class="font-size-h6 font-weight-bolder text-dark">Last Name</label>
-                        <input type="text" class="form-control @error('last_name') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">    
+                        <input type="text" class="form-control @error('last_name') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
                         @error('last_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -149,9 +149,9 @@
                                         <span></span>
                                         Female
                                     </label>
-                                   
+
                                 </div>
-                               
+
                             </div>
                         </div>
 
@@ -196,10 +196,10 @@
                         </span>
                         @enderror
                     </div>
-                    
+
                     <div class="form-group ">
                         <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
-                        <input type="password" name="password" class="form-control @error('password') @enderror is-invalid form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Password" value="">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Password" value="">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -211,21 +211,22 @@
                         <input type="password" name="password_confirmation"class="form-control @error('password_confirmation') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Confirm Password" value="">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
+                            
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-                  
+
                     <div class="form-group row mb-0">
-                      
+
                             <button type="submit" class="btn btn-success btn-shadow-hover font-weight-bolder w-25 py-3 mx-auto">
                                 {{ __('Register') }}
                             </button>
-                      
+
                     </div>
                 </form>
 
-                
+
             </div>
            </div>
 

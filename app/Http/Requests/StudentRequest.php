@@ -32,11 +32,11 @@ class StudentRequest extends FormRequest
              Rule::unique('users', 'email')->ignore($this->user)],
             'password'=>'required|string|min:6|confirmed',
             'password_confirmation'=>'required',
-            'phone'=>'required|numeric|min:8',
+            'phone' => 'required|numeric|min:8,max:11',
             'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'gender'=>'required|string',
             'addresse'=>'required|string',
-            
+
         ];
     }
 }

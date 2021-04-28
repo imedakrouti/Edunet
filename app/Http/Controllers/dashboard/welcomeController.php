@@ -17,9 +17,10 @@ class welcomeController extends Controller
         if(auth::user()->hasRole('super_admin')){
             return view('dashboard.super_admin');
         }
-       
-            return view('dashboard.journaliste');
-        
-       
-    } 
+        $student=auth::user();
+        dd($student->student);
+            return view('dashboard.student');
+
+
+    }
 }

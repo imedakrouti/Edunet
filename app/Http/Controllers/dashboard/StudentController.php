@@ -42,6 +42,8 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
+
+       // dd($request);
         $user = User::create([
             'first_name'        => $request->first_name,
             'last_name'         => $request->last_name,
@@ -54,10 +56,10 @@ class StudentController extends Controller
             $request->image->move(public_path('images/user'), $profile);
 
             $user->update([
-                'profile_picture' => $profile
+                'image' => $profile
             ]);
-        } 
-      
+        }
+
 
         $user->student()->create([
             'gender'            => $request->gender,

@@ -31,7 +31,7 @@
 							<ul class="menu-nav">
 								<li class="menu-item menu-item-active" aria-haspopup="true">
 									<a href="{{route('dashboard.welcome')}}" class="menu-link">
-										<span class="svg-icon menu-icon">
+										<span class="svg-icon svg-icon-danger menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -46,7 +46,7 @@
 									</a>
 								</li>
 							@role('super_admin')
-								<li class="menu-item menu-item-submenu {{ request()->routeIs('dashboard.journaliste.*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<li class="menu-item menu-item-submenu {{ request()->routeIs('dashboard.Teacher.*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
 									<a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
                                             <object data="{{ asset('admin/assets/media/svg/avatars/teacher.svg') }}" width="24px" height="24px"> </object>
@@ -61,31 +61,26 @@
 
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-text">Etudiants</span>
+										<span class="menu-text">Enseignants</span>
 										<i class="menu-arrow"></i>
 									</a>
 									<div class="menu-submenu">
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
-											<li class="menu-item menu-item-parent" aria-haspopup="true">
-												<span class="menu-link">
-													<span class="menu-text">Themes</span>
-												</span>
-											</li>
 											<li class="menu-item {{ request()->routeIs('dashboard.Student.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
 												<a href="{{route('dashboard.Student.index')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
-													<span class="menu-text">Liste Etudiants</span>
+													<span class="menu-text">Liste Enseignants</span>
 												</a>
 											</li>
-											<li class="menu-item {{ request()->routeIs('dashboard.Student.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+											<li class="menu-item {{ request()->routeIs('dashboard.Teacher.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
 												<a href="{{route('dashboard.Student.create')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
-													<span class="menu-text">Ajouter Etudiant</span>
+													<span class="menu-text">Ajouter Enseignant</span>
 												</a>
 											</li>
 										</ul>
@@ -112,11 +107,7 @@
 									<div class="menu-submenu">
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
-											<li class="menu-item menu-item-parent" aria-haspopup="true">
-												<span class="menu-link">
-													<span class="menu-text">Themes</span>
-												</span>
-											</li>
+
 											<li class="menu-item {{ request()->routeIs('dashboard.Student.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
 												<a href="{{route('dashboard.Student.index')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">

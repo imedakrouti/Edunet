@@ -3,6 +3,8 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Subject;
+use App\Models\Course;
 
 class Teacher extends Model
 {
@@ -11,10 +13,20 @@ class Teacher extends Model
         'gender',
         'phone',
         'dateofbirth',
-        'address',    
+        'address',
     ];
 
     public function user(){
         $this->belongTo(user::class);
+    }
+
+    public function subjets(){
+
+        return $this->belongsToMany (Subject::class);
+
+    }
+    public function courses(){
+
+        return $this->hasMany(Course::class);
     }
 }

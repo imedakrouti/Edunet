@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+    /* Register Teacher  */
+    Route::get('register-teacher', 'Auth\teacherController@create')->name('teacher.create');
+    Route::post('register-teacher', 'Auth\teacherController@register')->name('teacher.create');
+
 
 Auth::routes();
 

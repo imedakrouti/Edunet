@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    /* Alert::success('Success Title', 'Success Message'); */
+ /*    toast('Eleves Ajouté','success')->background('green')->hideCloseButton(); */
+    //alert()->success('Post Created', 'Successfully');
+
+    /* toast('Post Updated','success','top-right')->hideCloseButton(); */
+    
+
+
     return view('welcome');
 });
+/* Route::get('changeStatus', 'dashboard\StudentController@userChangeStatus');
+ */
 
     /* Register Teacher  */
     Route::get('register-teacher', 'Auth\teacherController@create')->name('teacher.create');

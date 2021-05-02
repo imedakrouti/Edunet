@@ -16,7 +16,8 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>Metronic Live preview | Keenthemes</title>
+		<title>@yield('title')</title>
+       
 		<meta name="description" content="Metronic admin admin live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -26,6 +27,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 		<!--begin::Main-->
+
 		<!--begin::Header Mobile-->
 		@include('layouts.dashboard.headermobile')
 		<!--end::Header Mobile-->
@@ -75,7 +77,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<!--end::Main-->
 		<!-- begin::User Panel-->
-		
+
 		<!-- end::User Panel-->
 		<!--begin::Quick Cart-->
 
@@ -119,6 +121,8 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!--end::Content-->
 		</div>
 		<!--end::Demo Panel-->
+
+        @include('sweetalert::alert')
 		<!--begin::Page Scripts-->
 		@include('layouts.dashboard.footerscripts')
 	<!--end::Page Scripts-->

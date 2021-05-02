@@ -13,13 +13,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
 
-        $user=user::create([
+        /* $user=user::create([
             'first_name'=>'imed',
             'last_name'=>'imed',
             'email'=>'akrouti',
             'password'=>bcrypt('123456')
         ]);
-        $user->attachRole('student');
+        $user->attachRoles(['student','admin']); */
         
     }
 }

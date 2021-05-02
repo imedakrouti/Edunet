@@ -46,7 +46,7 @@
 									</a>
 								</li>
 							@role('super_admin')
-								<li class="menu-item menu-item-submenu {{ request()->routeIs('dashboard.Teacher.*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+								<li class="menu-item menu-item-submenu {{ request()->routeIs('dashboard.teacher.*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
 									<a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
                                             <object data="{{ asset('admin/assets/media/svg/avatars/teacher.svg') }}" width="24px" height="24px"> </object>
@@ -67,16 +67,16 @@
 									<div class="menu-submenu">
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
-											<li class="menu-item {{ request()->routeIs('dashboard.Student.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-												<a href="{{route('dashboard.Student.index')}}" class="menu-link">
+											<li class="menu-item {{ request()->routeIs('dashboard.teacher.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+												<a href="{{route('dashboard.teacher.index')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
 													<span class="menu-text">Liste Enseignants</span>
 												</a>
 											</li>
-											<li class="menu-item {{ request()->routeIs('dashboard.Teacher.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-												<a href="{{route('dashboard.Student.create')}}" class="menu-link">
+											<li class="menu-item {{ request()->routeIs('dashboard.teacher.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+												<a href="{{route('dashboard.teacher.create')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
@@ -108,16 +108,16 @@
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
 
-											<li class="menu-item {{ request()->routeIs('dashboard.Student.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-												<a href="{{route('dashboard.Student.index')}}" class="menu-link">
+											<li class="menu-item {{ request()->routeIs('dashboard.student.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+												<a href="{{route('dashboard.student.index')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
 													<span class="menu-text">Liste Etudiants</span>
 												</a>
 											</li>
-											<li class="menu-item {{ request()->routeIs('dashboard.Student.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-												<a href="{{route('dashboard.Student.create')}}" class="menu-link">
+											<li class="menu-item {{ request()->routeIs('dashboard.student.create') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+												<a href="{{route('dashboard.student.create')}}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>

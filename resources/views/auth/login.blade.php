@@ -139,10 +139,10 @@ License: You must have a valid license purchased only from themeforest(the above
 								<h3 class="opacity-40 font-weight-normal">Sign In To Admin</h3>
 								<p class="opacity-40">Enter your details to login to your account:</p>
 							</div>
-							<form class="form" id="" action="{{route('login')}} "method="post">
+							<form class="form" id="kt_login_signin_form" action="{{route('login')}} "method="post">
                                 @csrf
 								<div class="form-group">
-									<input class="form-control @error('email') is-invalid @enderror h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" />
+									<input class="form-control @error('email') is-invalid @enderror h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" value="{{old('email')}}"/>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -163,7 +163,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<input type="checkbox" name="remember" />
 										<span></span>Remember me</label>
 									</div>
-									<a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Forget Password ?</a>
+									<a href="javascript:;" id="" class="text-white font-weight-bold">Forget Password ?</a>
 								</div>
                                 <div class="form-group text-center mt-10">
 									<button id="" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Sign In</button>
@@ -172,12 +172,12 @@ License: You must have a valid license purchased only from themeforest(the above
 							</form>
 							<div class="mt-10">
 								<span class="opacity-40 mr-4">Don't have an account yet?</span>
-								<a href="javascript:;" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Sign Up</a>
+								<a href="javascript:;" id="" class="text-white opacity-30 font-weight-normal">Sign Up</a>
 							</div>
 						</div>
 						<!--end::Login Sign in form-->
 						<!--begin::Login Sign up form-->
-						<div class="login-signup">
+						{{-- <div class="login-signup">
 							<div class="mb-20">
 								<h3 class="opacity-40 font-weight-normal">Sign Up</h3>
 								<p class="opacity-40">Enter your details to create your account</p>
@@ -205,11 +205,11 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="form-text text-muted text-center"></div>
 								</div>
 								<div class="form-group">
-									<button id="kt_login_signup_submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Sign Up</button>
-									<button id="kt_login_signup_cancel" class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
+									<button id="" class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Sign Up</button>
+									<button id="" class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
 								</div>
 							</form>
-						</div>
+						</div> --}}
 						<!--end::Login Sign up form-->
 						<!--begin::Login forgot password form-->
 						<div class="login-forgot">
@@ -217,13 +217,13 @@ License: You must have a valid license purchased only from themeforest(the above
 								<h3 class="opacity-40 font-weight-normal">Forgotten Password ?</h3>
 								<p class="opacity-40">Enter your email to reset your password</p>
 							</div>
-							<form class="form" id="kt_login_forgot_form">
+							<form class="form" id="">
 								<div class="form-group mb-10">
 									<input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
 								</div>
 								<div class="form-group">
-									<button id="kt_login_forgot_submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Request</button>
-									<button id="kt_login_forgot_cancel" class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
+									<button id="" class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Request</button>
+									<button id="" class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
 								</div>
 							</form>
 						</div>
@@ -244,8 +244,8 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{asset('admin/assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
-		{{-- <script src="{{asset('admin/assets/js/pages/custom/login/login-general.js')}}"></script> --}}
-		<!--end::Page Scripts-->
+{{-- 		<script src="{{asset('admin/assets/js/pages/custom/login/login-general.js')}}"></script>
+ --}}		<!--end::Page Scripts-->
 	</body>
 	<!--end::Body-->
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\models;
-use APP\Models\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -17,12 +17,12 @@ class Student extends Model
 
     public function user(){
 
-         $this->belongTo(user::class);
+        return $this->belongsTo(user::class);
     }
 
     public function course(){
 
-        $this->belongTo(user::class);
+        return $this->belongsToMany(course::class)->withTimestamps();
     }
 
 }

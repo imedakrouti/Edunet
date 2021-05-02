@@ -36,11 +36,16 @@ class User extends Authenticatable
         return ucfirst($value);
 
     }//end of get last name
-    
+
     public function getNameAttribute(){
         return $this->first_name . " {$this->last_name}" ;
     }
 
+    public function getPathImageAttribute(){
+
+        return asset('uploads/user-images/'.$this->image);
+
+    }
 
     /**Student Relation */
 

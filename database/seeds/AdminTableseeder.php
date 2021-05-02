@@ -13,10 +13,11 @@ class AdminTableseeder extends Seeder
     public function run()
     {
         $user=user::create([
-            'first_name'=>'super',
-            'last_name'=>'admin',
-            'email'=>'super_admin@gmail.com',
-            'password'=>bcrypt('123456')
+            'first_name'    =>'super',
+            'last_name'     =>'admin',
+            'email'         =>'super_admin@gmail.com',
+            'password'      =>bcrypt('123456'),
+            'status'        =>'1',
         ]);
         $user->attachRole('super_admin');
     }

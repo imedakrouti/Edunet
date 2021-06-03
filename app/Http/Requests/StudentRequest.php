@@ -35,7 +35,7 @@ class StudentRequest extends FormRequest
             'phone' => 'required|numeric|min:8,max:11',
             'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'gender'=>'required|string',
-            'addresse'=>'required|string',
+            'address'=>'required|string',
 
         ];
     }

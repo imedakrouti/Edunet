@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'timer' => env('SWEET_ALERT_TIMER', 000),
+    'timer' => env('SWEET_ALERT_TIMER', 7000),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'height_auto' => env('SWEET_ALERT_HEIGHT_AUTO', true),
+    'height_auto' => env('SWEET_ALERT_HEIGHT_AUTO', ),
 
     /*
     |--------------------------------------------------------------------------

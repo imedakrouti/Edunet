@@ -17,11 +17,16 @@ License: You must have a valid license purchased only from themeforest(the above
 	<head><base href="">
 		<meta charset="utf-8" />
 		<title>@yield('title')</title>
-       
-		<meta name="description" content="Metronic admin admin live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+        <meta name="description" content="Metronic admin admin live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
-		@include('layouts.dashboard.head')
+        @if (App::getLocale() == 'ar')
+        <html direction="rtl" dir="rtl" style="direction: rtl" >
+		@include('layouts.dashboard.head-rtl')
+		
+        @else
+        @include('layouts.dashboard.head')
+        @endif
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -52,14 +57,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<!--begin::Container-->
 							<div class="container">
 							@yield('content')
-								<!--begin::admin-->
-								<!--begin::Row-->
 
-								<!--end::Row-->
-								<!--begin::Row-->
-
-								<!--end::Row-->
-								<!--end::admin-->
 							</div>
 							<!--end::Container-->
 						</div>
@@ -76,18 +74,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!--end::Page-->
 		</div>
 		<!--end::Main-->
-		<!-- begin::User Panel-->
-
-		<!-- end::User Panel-->
-		<!--begin::Quick Cart-->
-
-		<!--end::Quick Cart-->
-		<!--begin::Quick Panel-->
-
-		<!--end::Quick Panel-->
-		<!--begin::Chat Panel-->
-
-		<!--end::Chat Panel-->
 		<!--begin::Scrolltop-->
 		<div id="kt_scrolltop" class="scrolltop">
 			<span class="svg-icon">

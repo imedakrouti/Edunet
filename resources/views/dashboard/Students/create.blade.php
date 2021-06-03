@@ -12,63 +12,18 @@
                 <!--begin::Details-->
                 <div class="d-flex align-items-center flex-wrap mr-2">
                     <!--begin::Title-->
-                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Students</h5>
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@lang('site.students')</h5>
                     <!--end::Title-->
                     <!--begin::Separator-->
                     <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                     <!--end::Separator-->
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">entre student details</span>
+                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@lang('site.enter_details') @lang('site.student') </span>
 
                     </div>
                     <!--end::Search Form-->
-                    <!--begin::Group Actions-->
-                    <div class="d-flex- align-items-center flex-wrap mr-2 d-none" id="kt_subheader_group_actions">
-                        <div class="text-dark-50 font-weight-bold">
-                        <span id="kt_subheader_group_selected_rows">23</span>Selected:</div>
-                        <div class="d-flex ml-6">
-                            <div class="dropdown mr-2" id="kt_subheader_group_actions_status_change">
-                                <button type="button" class="btn btn-light-primary font-weight-bolder btn-sm dropdown-toggle" data-toggle="dropdown">Update Status</button>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-sm">
-                                    <ul class="navi navi-hover pt-3 pb-4">
-                                        <li class="navi-header font-weight-bolder text-uppercase text-primary font-size-lg pb-0">Change status to:</li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link" data-toggle="status-change" data-status="1">
-                                                <span class="navi-text">
-                                                    <span class="label label-light-success label-inline font-weight-bold">Approved</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link" data-toggle="status-change" data-status="2">
-                                                <span class="navi-text">
-                                                    <span class="label label-light-danger label-inline font-weight-bold">Rejected</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link" data-toggle="status-change" data-status="3">
-                                                <span class="navi-text">
-                                                    <span class="label label-light-warning label-inline font-weight-bold">Pending</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link" data-toggle="status-change" data-status="4">
-                                                <span class="navi-text">
-                                                    <span class="label label-light-info label-inline font-weight-bold">On Hold</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <button class="btn btn-light-success font-weight-bolder btn-sm mr-2" id="kt_subheader_group_actions_fetch" data-toggle="modal" data-target="#kt_datatable_records_fetch_modal">Fetch Selected</button>
-                            <button class="btn btn-light-danger font-weight-bolder btn-sm mr-2" id="kt_subheader_group_actions_delete_all">Delete All</button>
-                        </div>
-                    </div>
-                    <!--end::Group Actions-->
+
                 </div>
                 <!--end::Details-->
                 <!--begin::Toolbar-->
@@ -108,7 +63,7 @@
                     </span>
                 </span>
 
-                <span class="text-dark mx-3">Ajouter Student </span>
+                <span class="text-dark mx-3">@lang('site.add') @lang('site.student') </span>
 
               </h3>
              </div>
@@ -117,8 +72,8 @@
                 <form method="POST" action="{{ route('dashboard.student.store') }}"enctype="multipart/form-data">
                     @csrf
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">First Name</label>
-                        <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="First Name" value="{{ old('first_name') }}">
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.first_name')</label>
+                        <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="@lang('site.first_name')" value="{{ old('first_name') }}">
                         @error('first_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -126,8 +81,8 @@
                         @enderror
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Last Name</label>
-                        <input type="text" class="form-control @error('last_name') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.last_name')</label>
+                        <input type="text" class="form-control @error('last_name') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" name="last_name" placeholder="@lang('site.last_name')" value="{{ old('last_name') }}">
                         @error('last_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -135,18 +90,18 @@
                         @enderror
                     </div>
                         <div class="form-group ">
-                            <label class="font-size-h6 font-weight-bolder text-dark">Gender</label>
+                            <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.gender')</label>
                             <div class="col-9 col-form-label">
                                 <div class="radio-inline">
                                     <label class="radio radio-outline radio-outline-2x radio-primary">
                                         <input type="radio" name="gender" @error('gender') is-invalid @enderror checked="checked" value="male" {{ (old('gender') == 'male') ? 'checked' : '' }}/>
                                         <span></span>
-                                        Male
+                                        @lang('site.male')
                                     </label>
                                     <label class="radio radio-outline radio-outline-2x radio-primary">
                                         <input type="radio" name="gender" @error('gender') is-invalid @enderror value="female" {{ (old('gender') == 'female') ? 'checked' : '' }}/>
                                         <span></span>
-                                        Female
+                                        @lang('site.female')
                                     </label>
 
                                 </div>
@@ -155,8 +110,8 @@
                         </div>
 
                     <div class="form-group ">
-                        <label class="font-size-h6 font-weight-bolder text-dark col-xl-3 col-lg-3 col-form-label">Phone</label>
-                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder=" Phone Number" value="{{ old('phone') }}">
+                        <label class="font-size-h6 font-weight-bolder text-dark col-xl-3 col-lg-3 col-form-label">@lang('site.phone')</label>
+                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder=" @lang('site.phone')" value="{{ old('phone') }}">
                         @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -164,7 +119,7 @@
                         @enderror
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark d-block">Image</label>
+                        <label class="font-size-h6 font-weight-bolder text-dark d-block">@lang('site.image')</label>
                         <div class="image-input image-input-outline image-input-circle" id="kt_image_3">
                             <div class="image-input-wrapper" style="background-image: url({{URL::asset('admin/assets/media/users/100_3.jpg')}})"></div>
                             <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
@@ -178,17 +133,17 @@
                         </div>
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Adresse</label>
-                        <input type="text" name="addresse" class="form-control @error('addresse') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Adresse" value="{{ old('addresse') }}">
-                        @error('addresse')
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.address')</label>
+                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="@lang('site.address')" value="{{ old('address') }}">
+                        @error('address')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Email" value="{{ old('email') }}">
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.email')</label>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="@lang('site.email')" value="{{ old('email') }}">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -197,8 +152,8 @@
                     </div>
 
                     <div class="form-group ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Password" value="">
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.password')</label>
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror  form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="@lang('site.password')" value="">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -206,8 +161,8 @@
                         @enderror
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Confirm Password</label>
-                        <input type="password" name="password_confirmation"class="form-control @error('password_confirmation') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Confirm Password" value="">
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.password_confirmation')</label>
+                        <input type="password" name="password_confirmation"class="form-control @error('password_confirmation') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="@lang('site.password_confirmation')" value="">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
 
@@ -218,8 +173,9 @@
 
                     <div class="form-group row mb-0">
 
-                            <button type="submit" class="btn btn-success btn-shadow-hover font-weight-bolder w-25 py-3 mx-auto">
-                                {{ __('Register') }}
+                            <button type="submit" class="btn btn-success btn-shadow-hover font-weight-bolder px-5 py-3 mx-auto">
+                                <i class="fa fa-plus"></i>
+                                @lang('site.add')
                             </button>
 
                     </div>

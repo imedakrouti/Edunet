@@ -21,7 +21,7 @@ Route::get('/', function () {
     //alert()->success('Post Created', 'Successfully');
 
     /* toast('Post Updated','success','top-right')->hideCloseButton(); */
-    
+
 
 
     return view('welcome');
@@ -33,7 +33,10 @@ Route::get('/', function () {
     Route::get('register-teacher', 'Auth\teacherController@create')->name('teacher.create');
     Route::post('register-teacher', 'Auth\teacherController@register')->name('teacher.create');
 
-
+    Route::get('/dropzone','ImageController@index');
+    Route::post('/dropzone/store','ImageController@store')->name('dropzone.store');
+   /*  Route::get('dropzone', 'DropzoneController@dropzone');
+    Route::post('dropzone/store', 'DropzoneController@dropzoneStore')->name('dropzone.store'); */
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

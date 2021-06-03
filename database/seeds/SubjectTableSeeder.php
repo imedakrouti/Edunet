@@ -13,7 +13,7 @@ class SubjectTableSeeder extends Seeder
     {
         $course=subject::create([
             'title'=>'science',
-            'description'=>'science'
+            'description'=>'science',
         ]);
     }
 }

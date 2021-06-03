@@ -6,8 +6,8 @@ var KTDropzoneDemo = function () {
     var demo1 = function () {
         // single file upload
         $('#kt_dropzone_1').dropzone({
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-            paramName: "file", // The name that will be used to transfer the file
+            url: "{{ route('dashboard.subject.store')}}", // Set the url for your upload script location
+            paramName: "file",//l be used to transfer the file
             maxFiles: 1,
             maxFilesize: 5, // MB
             addRemoveLinks: true,
@@ -65,7 +65,7 @@ var KTDropzoneDemo = function () {
         previewNode.remove();
 
         var myDropzone4 = new Dropzone(id, { // Make the whole body a dropzone
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+            url: "{{route('dashboard.subject.store')}}", // Set the url for your upload script location
             parallelUploads: 20,
             previewTemplate: previewTemplate,
             maxFilesize: 1, // Max filesize in MB

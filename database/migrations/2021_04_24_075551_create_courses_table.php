@@ -19,8 +19,9 @@ class CreateCoursesTable extends Migration
             $table->foreignId('teacher_id')->constrained();
             $table->string('title');
             $table->string('description');
-            $table->string('image')->default('default.jpg');
-            $table->string('file');
+            $table->string('type');
+            $table->string('image')->default('default.png');
+            $table->string('course');
 
             $table->foreign('subject_id')->references('id')->on('subjects');
 

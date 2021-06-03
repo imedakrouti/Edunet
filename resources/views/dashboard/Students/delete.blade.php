@@ -1,12 +1,11 @@
 <!-- Deleted inFormation Student -->
 <div class="modal fade text-left" id="Delete_Student{{$student->id}}" tabindex="-1" aria-labelledby="myModalLabel120" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-dialog" role="document">
         <div class="modal-content">
            <div class="modal-header bg-danger">
                     <h5 class="modal-title text-light" id="myModalLabel120">
                         <i class="far fa-trash-alt text-light mr-2"></i>
-                        Supprimer un Elève
-                    </h5>
+                        @lang('site.delete') @lang('site.student')                    </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <i data-feather="x"></i>
                     </button>
@@ -19,15 +18,17 @@
                     <input type="hidden" name="id" value="{{$student->id}}">
                     <div class="alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5 w-100" role="alert">
                         <div class="alert-icon"><i class="flaticon-warning"></i></div>
-                        <div class="alert-text"> Voulez-vous vraiment le supprimer?</div>
-                        
+                        <div class="alert-text"> هل أنت متأكد أنك تريد حذف ذلك؟
+                        </div>
+
                     </div>
-                  
+
                 </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <div class="modal-footer d-flex justify-content-start">
+
                         <button  class="btn btn-light-danger font-weight-bold mr-2">
-                            <i class="fa fa-trush"></i>Supprimer </button>
+                            <i class="fa fa-trush"></i>حذف </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
                     </div>
                 </form>
             </div>

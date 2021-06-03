@@ -22,7 +22,7 @@
         <div class="d-flex align-items-center p-8 rounded-top">
             <!--begin::Symbol-->
             <div class="symbol symbol-md bg-light-primary mr-3 flex-shrink-0">
-                <img src="{{asset('admin/assets/media/users/300_21.jpg')}}" alt="" />
+                <img src="{{ auth::user()->path_image }}" alt="" />
             </div>
             <!--end::Symbol-->
             <!--begin::Text-->

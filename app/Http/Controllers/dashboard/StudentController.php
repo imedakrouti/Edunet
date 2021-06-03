@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:students-read')->only('index');
+        $this->middleware('permission:students-create')->only('create','store');
+        $this->middleware('permission:students-update')->only('edit','update');
+        $this->middleware('permission:students-delete')->only('destroy');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +47,8 @@ class StudentController extends Controller
         $students =student:: withCount('user')->when($request->table_search, function ($query)use ($request)  {
              $query->wherehas('user',function(builder $q)use ($request){
                  $q->where('first_name','like', '%' . $request->table_search . '%')
-                ->orwhere('last_name', 'like', "%{$request->table_search}%");
+                ->orwhere('last_name', 'like', "%{$request->table_search}%")
+                ->orwhere('address', 'like', "%{$request->table_search}%");
             });
 
    })->latest()->paginate(5);
@@ -48,7 +60,7 @@ class StudentController extends Controller
   // $students=student::paginate(); */
    //dd($students);
 
-         toast('Eleves Ajouté avec succé','success')->autoClose(5000);
+         //toast('Eleves Ajouté avec succé','success')->autoClose(5000);
            return view('dashboard.students.index',compact('students'));
     }
 
@@ -59,7 +71,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-       
+
         return view('dashboard.students.create');
     }
 
@@ -95,18 +107,20 @@ class StudentController extends Controller
           })->save(public_path('uploads/user-images/'.$request->image->hashName()));
           $data_user['image']=$request->image->hashName();
          }
+         $data_user['password']=Hash::make($request->password);
+         //dd($data_user);
          $user = user::create($data_user);
 
         $user->student()->create([
             'gender'            => $request->gender,
             'phone'             => $request->phone,
-            'address'           => $request->addresse,
+            'address'           => $request->address,
         ]);
 
         $user->attachRoles(['Student','admin']);
 
-        toast('Eleves Ajouté avec succé','success');
-        
+        toast(__('site.added_successfully'), 'success');
+
 
         return redirect()->route('dashboard.student.index');
     }
@@ -140,11 +154,37 @@ class StudentController extends Controller
      * @param  \App\Models\student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, student $student)
+    public function update(UpdateStudentRequest $request, student $student)
     {
+        //dd($request->all());
+        $data_user=$request->except(['image','password_confirmation','gender','phone','address','_token','_method']);
 
-    }
+         //dd($data_user);
+         if($request->image){
+            if($student->user->image != 'default.png'){
+               // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
+                Storage::disk('public_upload')->delete('/user-images/'.$student->user->image);
+            }
+            Image::make($request->image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+         })->save(public_path('uploads/user-images/'.$request->image->hashName()));
+         $data_user['image']=$request->image->hashName();
+        }
+        // dd($data_user);
+        $student->user()->update($data_user);
 
+        $student->update([
+            'gender'            => $request->gender,
+            'phone'             => $request->phone,
+            'address'           => $request->address,
+        ]);
+        toast(__('site.updated_successfully'), 'success');
+
+
+        return redirect()->route('dashboard.student.index');
+
+
+}
     /**
      * Remove the specified resource from storage.
      *
@@ -163,7 +203,7 @@ class StudentController extends Controller
        // dd($user);
         /* $user->delete(); */
         //toast( 'Eleve supprimé avec succé','success',);
-        toast('Eleve supprimé avec succé', 'success')->position('left', 'left')->background('#ddd')->autoClose(5000);
+        toast(__('site.deleted_successfully'), 'success');
 
         return redirect()->back();
     }

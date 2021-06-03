@@ -3731,7 +3731,7 @@ input[type="button"].btn-block {
   font-weight: 400;
   line-height: 1.5;
   color: #3F4254;
-  background-color: #ffffff;
+  background-color:#ffff ;
   border: 1px solid #E4E6EF;
   border-radius: 0.42rem;
   -webkit-box-shadow: none;
@@ -61340,7 +61340,7 @@ body {
       .aside-menu .menu-nav > .menu-item > .menu-heading .menu-text,
       .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
         font-weight: 400;
-        font-size: 1rem;
+        font-size: 1.5rem;
         text-transform: initial; }
       .aside-menu .menu-nav > .menu-item > .menu-heading .menu-icon,
       .aside-menu .menu-nav > .menu-item > .menu-link .menu-icon {
@@ -61419,7 +61419,7 @@ body {
         .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-text,
         .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-text {
           font-weight: 400;
-          font-size: 1rem;
+          font-size: 1.5rem;
           text-transform: initial; }
         .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-icon,
         .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-icon {

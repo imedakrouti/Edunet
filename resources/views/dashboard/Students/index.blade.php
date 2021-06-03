@@ -13,14 +13,14 @@
         <!--begin::Details-->
         <div class="d-flex align-items-center flex-wrap mr-2">
             <!--begin::Title-->
-            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Etudiants</h5>
+            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@lang('site.students')</h5>
             <!--end::Title-->
             <!--begin::Separator-->
             <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
             <!--end::Separator-->
             <!--begin::Search Form-->
             <div class="d-flex align-items-center" id="kt_subheader_search">
-                <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">Liste Etudiants</span>
+                <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@lang('site.list') @lang('site.students')</span>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title ">
             <object data="{{ asset('admin/assets/media/svg/avatars/student.svg') }}" width="32px" height="32" class="mr-2"> </object>
-            Liste Etudiants   </h3>
+            @lang('site.list') @lang('site.students')   </h3>
             <div class="quick-search quick-search-inline w-auto w-lg-300px" id="kt_quick_search_inline">
                 <!--begin::Form-->
                 <form  action="{{ route('dashboard.student.index')}}"method="get" class="quick-search-form">
@@ -55,7 +55,7 @@
                                 </span>
                             </span>
                         </div>
-                        <input type="text" name="table_search" class="form-control h-40px" placeholder="Rechercher..."value="{{request()->table_search}}">
+                        <input type="text" name="table_search" class="form-control h-40px" placeholder="@lang('site.search')..."value="{{request()->table_search}}">
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="quick-search-close ki ki-close icon-sm"></i>
@@ -86,25 +86,26 @@
                             </g>
                         </svg>
                         <!--end::Svg Icon-->
-                    </span>Ajouter Etudiant</a>
+                    </span>@lang('site.add') @lang('site.student')</a>
         </div>
     </div>
     <div class="card-body  d-flex justify-content-center align-items-center">
         <!--begin::Example-->
         @if ($students->count())
-        <div class="table table-head-custom table-head-bg table-vertical-center table-borderless" >
+        <div class="table-responsive">
+        <div class="table table-head-custom table-head-bg table-vertical-center table-borderless table-hover" >
 
             <table class="table mb-5">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Telephone</th>
-                        <th scope="col">Status</th>
-                        <th scope="col text-center"style="width: 100px">Action</th>
+                        <th scope="col">@lang('site.image')</th>
+                        <th scope="col">@lang('site.name')</th>
+                        <th scope="col">@lang('site.gender')</th>
+                        <th scope="col">@lang('site.email')</th>
+                        <th scope="col">@lang('site.phone')</th>
+                        <th scope="col">@lang('site.status')</th>
+                        <th scope="col text-center"style="width: 100px">@lang('site.action')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,9 +120,9 @@
 
                         <td >
                             @if( $student->user->status)
-                            <span class="label label-inline label-light-success font-weight-bold align-middle">Active</span>
+                            <span class="label label-inline label-light-success font-weight-bold align-middle">@lang('site.active')</span>
                             @else
-                            <span class="label label-inline label-light-danger font-weight-bold align-middle">Inactive</span>
+                            <span class="label label-inline label-light-danger font-weight-bold align-middle">@lang('site.inactive')</span>
                             @endif
                         </td>
                         <td class="">
@@ -187,6 +188,7 @@
                 </tbody>
             </table>
 
+        </div>
         </div>
         @else
             @include('dashboard.partials.no_informations')

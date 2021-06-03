@@ -11,6 +11,19 @@ class Course extends Model
 {
     protected $guarded=[];
 
+    protected $appends=['path_image','path_course'];
+
+    public function getPathImageAttribute(){
+
+        return asset('uploads/courses/'.$this->image);
+
+    }
+    public function getPathCourseAttribute(){
+
+        return asset('uploads/courses/'.$this->course);
+
+    }
+
     public function students(){
 
         return $this->belongToMany(Student::class)->withTimestamps();
@@ -18,10 +31,10 @@ class Course extends Model
 
     public function teacher(){
 
-        return $this->belongTo(teacher::class);
+        return $this->belongsTo(teacher::class);
     }
     public function subject(){
 
-        return $this->belongTo(subject::class);
+        return $this->belongsTo(subject::class);
     }
 }

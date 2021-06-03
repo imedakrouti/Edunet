@@ -91,11 +91,12 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head><base href="../../../../">
 		<meta charset="utf-8" />
-		<title>Login Page 5 | Keenthemes</title>
+		<title>Login | Naja7ni</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<link rel="canonical" href="https://keenthemes.com/metronic" />
+	{{--  	<link rel="canonical" href="https://keenthemes.com/metronic" />  --}}
 		<!--begin::Fonts-->
+        <html direction="rtl" dir="rtl" style="direction: rtl" >
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Custom Styles(used by this page)-->
@@ -105,17 +106,17 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="{{asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendors Styles-->
 		<!--begin::Global Theme Styles(used by all pages)-->
-		<link href="{{asset('admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('admin/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('admin/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('admin/assets/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/plugins/custom/prismjs/prismjs.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
-		<link href="{{asset('admin/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('admin/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('admin/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('admin/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/css/themes/layout/header/base/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/css/themes/layout/header/menu/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/css/themes/layout/brand/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('admin/assets/css/themes/layout/aside/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="{{asset('admin/assets/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{asset('admin/assets/media/svg/avatars/student.svg')}}" />
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -124,55 +125,69 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Login-->
 			<div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
-				<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url({{asset('admin/assets/media/bg/bg-2.jpg')}});">
-					<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
+				<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid bgi-no-repeat bgi-size-cover " style="background-color: #324586;background-image: url({{asset('admin/assets/media/bg/motif-bg.png')}});">
+					<div class="login-form  text-white p-4 position-relative overflow-hidden">
 						<!--begin::Login Header-->
 						<div class="d-flex flex-center mb-15">
 							<a href="#">
-								<img src="{{asset('admin/assets/media/logos/logo-letter-13.png')}}" class="max-h-75px" alt="" />
+								<img src="{{asset('admin/assets/media/logos/edukinib.png')}}" class="max-h-75px" alt="" />
 							</a>
 						</div>
 						<!--end::Login Header-->
 						<!--begin::Login Sign in form-->
 						<div class="login-signin">
-							<div class="mb-20">
-								<h3 class="opacity-40 font-weight-normal">Sign In To Admin</h3>
-								<p class="opacity-40">Enter your details to login to your account:</p>
+							<div class="mb-20 text-center">
+								<h2 class=" font-weight-normal text-light">@lang('site.login')</h2>
+								<p class="text-muted font-weight-bold font-size-h4">@lang('site.login_detail')</p>
 							</div>
 							<form class="form" id="kt_login_signin_form" action="{{route('login')}} "method="post">
                                 @csrf
 								<div class="form-group">
-									<input class="form-control @error('email') is-invalid @enderror h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" value="{{old('email')}}"/>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                        </div>
+									<input class="form-control @error('email') is-invalid @enderror  form-control form-control-solid h-auto py-4 px-6  font-size-h6" type="email" placeholder="@lang('site.email')" name="email" autocomplete="off" value="{{old('email')}}"/>
+                                    </div>
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
 								</div>
 								<div class="form-group">
-									<input class="form-control @error('password') is-invalid @enderror h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="password" placeholder="Password" name="password" />
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                        </div>
+                                        <input class="form-control @error('password') is-invalid @enderror form-control form-control-solid h-auto py-4 px-6  font-size-h6" type="password" placeholder="@lang('site.password')" name="password" />
+                                    </div>
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
 								</div>
-								<div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8 opacity-60">
+								<div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8">
 									<div class="checkbox-inline">
-										<label class="checkbox checkbox-outline checkbox-white text-white m-0">
+										<label class="checkbox checkbox-outline checkbox-white font-size-h6 font-weight-bolder text-light">
 										<input type="checkbox" name="remember" />
-										<span></span>Remember me</label>
+										<span></span> @lang('site.remember')</label>
 									</div>
-									<a href="javascript:;" id="" class="text-white font-weight-bold">Forget Password ?</a>
+									<a href="javascript:;" id="" class="text-white font-weight-bold font-size-h5">@lang('site.forgot_password')</a>
 								</div>
-                                <div class="form-group text-center mt-10">
-									<button id="" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Sign In</button>
+                                <div class="form-group text-center mt-5">
+									<button id="" class="btn btn-pill btn-primary font-size-h4 px-15 py-3">@lang('site.login')</button>
 								</div>
 								</div>
 							</form>
-							<div class="mt-10">
-								<span class="opacity-40 mr-4">Don't have an account yet?</span>
-								<a href="javascript:;" id="" class="text-white opacity-30 font-weight-normal">Sign Up</a>
+							<div class="mt-5">
+								<span class="font-size-h4 mr-4">@lang('site.account_yet')</span>
+								<a href="{{ route('register') }}" id="" class="text-muted  font-weight-bold font-size-h5">@lang('site.SignUp')</a>
 							</div>
 						</div>
 						<!--end::Login Sign in form-->

@@ -40,14 +40,14 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root ">
 			<!--begin::Error-->
-			<div class="d-flex flex-row-fluid flex-column bgi-size-cover bgi-position-center bgi-no-repeat p-10 p-sm-30 jusify-content-center align-items-center" style="background-image: url({{asset('admin/assets/media/bg/bg-2.jpg')}});">
+			<div class="d-flex flex-row-fluid flex-column bgi-size-cover bgi-position-center bgi-no-repeat p-10 p-sm-30 jusify-content-center align-items-center" style="background-color: #324586;background-image: url({{asset('admin/assets/media/bg/motif-bg.png')}});">
 				<!--begin::Content-->
-				<h1 class="font-weight-boldest text-dark-75 mt-15 opacity-40" style="font-size: 10rem">403</h1>
-				<p class="font-size-h3 text-muted font-weight-normal">{{__($exception->getMessage() ?: 'Forbidden')}}</p>
-                <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
-                    <button class="btn btn-pill btn-primary opacity-90 px-15 py-3">
-                        {{ __('Go Home') }}
-                    </button>
+				<h1 class="font-weight-boldest text-light mt-15" style="font-size: 10rem">403</h1>
+				<p class="font-size-h1 text-light opacity-90 text-leed font-weight-normal">{{__($exception->getMessage() ?: 'Forbidden')}}</p>
+                <a class="btn btn-pill btn-primary font-size-h4 px-15 py-3" href="{{ app('router')->has('home') ? route('home') : url('/') }}">
+                    
+                        {{ __('site.home') }}
+                   
                 </a>
 				<!--end::Content-->
 			</div>

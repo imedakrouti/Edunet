@@ -30,16 +30,16 @@ Route::get('/', function () {
  */
 
     /* Register Teacher  */
-    Route::get('register-teacher', 'Auth\teacherController@create')->name('teacher.create');
-    Route::post('register-teacher', 'Auth\teacherController@register')->name('teacher.create');
+    Route::get('register', 'UserController@create')->name('register');
+    Route::post('register', 'UserController@store')->name('registeruser');
 
     Route::get('/dropzone','ImageController@index');
     Route::post('/dropzone/store','ImageController@store')->name('dropzone.store');
    /*  Route::get('dropzone', 'DropzoneController@dropzone');
     Route::post('dropzone/store', 'DropzoneController@dropzoneStore')->name('dropzone.store'); */
-Auth::routes();
+    Auth::routes(['register' => false]);
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 /* Route::get('/dashboard', function () {
     return view('dashboard.super_admin');

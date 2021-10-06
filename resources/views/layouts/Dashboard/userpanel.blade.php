@@ -27,7 +27,7 @@
             <!--end::Symbol-->
             <!--begin::Text-->
             <div class="text-dark m-0 flex-grow-1 mr-3 font-size-h5">{{auth::user()->name}}</div>
-            <span class="label label-light-success label-lg font-weight-bold label-inline">3 messages</span>
+            <span class="label label-light-success label-lg font-weight-bold label-inline">3 @lang('site.messages')</span>
             <!--end::Text-->
         </div>
         <div class="separator separator-solid"></div>
@@ -41,9 +41,9 @@
                         <i class="flaticon2-calendar-3 text-success"></i>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Profile</div>
-                        <div class="text-muted">Account settings and more
-                        <span class="label label-light-danger label-inline font-weight-bold">update</span></div>
+                        <div class="font-weight-bold">@lang('site.Myacount')</div>
+                        <div class="text-muted">@lang('site.Accountsettings')
+                        <span class="label label-light-danger label-inline font-weight-bold">@lang('site.update')</span></div>
                     </div>
                 </div>
             </a>
@@ -55,8 +55,8 @@
                         <i class="flaticon2-mail text-warning"></i>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Messages</div>
-                        <div class="text-muted">Inbox and tasks</div>
+                        <div class="font-weight-bold">رسائلي</div>
+                        <div class="text-muted">البريد والمهام</div>
                     </div>
                 </div>
             </a>
@@ -68,8 +68,8 @@
                         <i class="flaticon2-rocket-1 text-danger"></i>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Activities</div>
-                        <div class="text-muted">Logs and notifications</div>
+                        <div class="font-weight-bold">نشاطاتي</div>
+                        <div class="text-muted">السجلات و إشعارات</div>
                     </div>
                 </div>
             </a>
@@ -81,8 +81,8 @@
                         <i class="flaticon2-hourglass text-primary"></i>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Tasks</div>
-                        <div class="text-muted">latest tasks and projects</div>
+                        <div class="font-weight-bold">مهامي</div>
+                        <div class="text-muted">أحدث المهام والمشاريع                        </div>
                     </div>
                 </div>
             </a>
@@ -94,11 +94,11 @@
 
 
                 <a href="{{ route('logout') }}"  class="btn btn-light-primary font-weight-bold"  onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">Sign Out</a>
+                     document.getElementById('logout-form').submit();">خروج</a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
-                <a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a>
+               {{--  <a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a> --}}
             </div>
             <!--end::Footer-->
         </div>

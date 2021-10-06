@@ -20,7 +20,7 @@ class task extends Model
     }
     public function getPathTaskAttribute(){
 
-        return asset('uploads/tasks/'.$this->book);
+        return asset('uploads/tasks/'.$this->task);
 
     }
 

@@ -57,19 +57,19 @@ class BookController extends Controller
          $request->validate([
             'title'         =>'required|string|min:4',
             'description'   =>'required|string|min:7',
-            'image'         =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'         =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048|required',
             'book'          => 'required|mimes:pdf,xlx,csv,zip,rar' ,
-            'subject_id'    =>'required'
+            'subject_id'    =>'required|min:1'
 
         ]);
-        $data_user=$request->except(['image','profile_avatar_remove']);
+        $data_book=$request->except(['image','profile_avatar_remove']);
         // dd($data_user);
         if($request->image){
             // $request->image->store('user-images','public_upload');
               Image::make($request->image)->resize(300, null, function ($constraint) {
                  $constraint->aspectRatio();
-          })->save(public_path('uploads/book/'.$request->image->hashName()));
-          $data_user['image']=$request->image->hashName();
+          })->save(public_path('uploads/books/'.$request->image->hashName()));
+          $data_book['image']=$request->image->hashName();
          }
 
          if($request->book) {
@@ -84,7 +84,7 @@ class BookController extends Controller
              $request->book -> move($path,$file_name);
             // $file_name= $this->saveImage($request->image,$path);
             //dd($file_name);
-            $data_user['book']=$file_name;
+            $data_book['book']=$file_name;
          }
            //dd($data_user);
           Book::create($data_user);
@@ -113,7 +113,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $subjects=subject::all();
+        return view('dashboard.books.edit',compact('subjects','book'));
+        //return view('dashboard.Books.edit',compact('book'));
     }
 
     /**
@@ -125,7 +127,48 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //toast(__('site.updated_successfully'), 'success')
+        $request->validate([
+            'title'         =>"required|string|min:4|unique:books,title,{$book->id}",
+            'description'   =>'required|string|min:7',
+            'image'         =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'book'          => 'required|mimes:pdf,xlx,csv,zip,rar' ,
+            'subject_id'    =>'required'
+        ]);
+        $data_book=$request->except(['image','profile_avatar_remove']);
+         //dd($data_user);
+         if($request->image){
+            if($book->image != 'default.jpg'){
+               // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
+                Storage::disk('public_upload')->delete('uploads/books/'.$book->image);
+            }
+            Image::make($request->image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+         })->save(public_path('uploads/books/'.$request->image->hashName()));
+         $data_book['image']=$request->image->hashName();
+        }
+        // dd($data_user);
+         //dd($data_book);
+         if($request->book) {
+
+            Storage::disk('public_upload')->delete('/books/'.$book->book);
+             
+            /*   $request->image->store('images','public');
+              $request->image->store('user-images','public_upload'); */
+              $path="uploads/books";
+               //1. get file extension
+              $file_extension = $request->book -> getClientOriginalExtension();
+              //2 add time to differnet each image from athor
+              $file_name = time().'.'.$file_extension;
+  
+               $request->book -> move($path,$file_name);
+              // $file_name= $this->saveImage($request->image,$path);
+              //dd($file_name);
+              $data_book['book']=$file_name;
+           }
+        $book->update($data_book);
+        toast(__('site.updated_successfully'), 'success');
+        return redirect()->route('dashboard.book.index');
+
     }
 
     /**

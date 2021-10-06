@@ -244,8 +244,7 @@
                     </div>
                     <div class="form-group">
                       <label for=""> <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.subjects')</label></label>
-                      <select name="matieres[]" class="form-control select @error('matieres') is-invalid @enderror"  multiple>
-                        @foreach ($matieres as $matiere)
+ <select name="matieres[]" class="form-control select @error('matieres') is-invalid @enderror"  multiple>                        @foreach ($matieres as $matiere)
                         <option value="{{ $matiere->id}}">{{ $matiere->title }}</option>
                     @endforeach
                     </select>

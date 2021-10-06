@@ -18,7 +18,7 @@ var KTSelect2 = function() {
         });
         $('.select').select2({
             placeholder: "  اختر المواد"
-        });
+        }); 
 
         // basic
         $('#kt_select2_4').select2({

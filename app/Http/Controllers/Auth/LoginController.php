@@ -23,7 +23,7 @@ class LoginController extends Controller
     |
     */
 
-   
+
 
     use AuthenticatesUsers;
 
@@ -75,7 +75,7 @@ class LoginController extends Controller
 
     return $this->sendFailedLoginResponse($request);
 } */
-public function login(Request $request){        
+public function login(Request $request){
     $this->validateLogin($request);
 
     if (method_exists($this, 'hasTooManyLoginAttempts') &&
@@ -91,19 +91,19 @@ public function login(Request $request){
             return redirect()->intended('dashboard');
         }  else {
             // This will return the message required as desired
-            abort(403, 'Your account has been disabled by an administrator.');
+            abort(403, 'الرجاء الانتظار حتى تفعيل الحساب');
         }
-    } else {            
+    } else {
         $this->incrementLoginAttempts($request);
         return $this->sendFailedLoginResponse($request);
     }
 }
 
 // Error massage for inactive credential
-private function inactiveCredential(Request $request){    
+private function inactiveCredential(Request $request){
     throw ValidationException::withMessages([
         // auth.not-active can be added in resources/lang/en/auth.php
         $this->username() => [trans('auth.not-active')],
-    ]);    
+    ]);
 }
 }

@@ -12,14 +12,14 @@
                 <!--begin::Details-->
                 <div class="d-flex align-items-center flex-wrap mr-2">
                     <!--begin::Title-->
-                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Matiere</h5>
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@lang('site.subjects')</h5>
                     <!--end::Title-->
                     <!--begin::Separator-->
                     <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                     <!--end::Separator-->
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">Entrer details matiere</span>
+                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@lang('site.update') @lang('site.details') @lang('site.subjects')</span>
 
                     </div>
                     <!--end::Search Form-->
@@ -108,7 +108,7 @@
                     </span>
                 </span>
 
-                <span class="text-dark mx-3">Modifier Matiere</span>
+                <span class="text-dark mx-3">@lang('site.update') @lang('site.subject')</span>
 
               </h3>
              </div>
@@ -118,7 +118,7 @@
                     @csrf
                     @method('Put')
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Titre</label>
+                        <label class="font-size-h6 font-weight-bolder text-dark">@lang('site.title')</label>
                         <input type="text" name="title" class="form-control @error('title') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="Titre" value="{{ $subject->title }}">
                         @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -127,7 +127,7 @@
                         @enderror
                     </div>
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark"> Description </label>
+                        <label class="font-size-h6 font-weight-bolder text-dark"> @lang('site.description') </label>
                         <textarea name="description"class="form-control @error('description') is-invalid @enderror form-control-solid h-auto p-5 border-0 rounded-lg font-size-h6"  placeholder="Description"  rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 96px;resize:none">{{$subject->description }}</textarea>
                         @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -137,7 +137,7 @@
                     </div>
                    
                     <div class="form-group  ">
-                        <label class="font-size-h6 font-weight-bolder text-dark d-block">Image</label>
+                        <label class="font-size-h6 font-weight-bolder text-dark d-block">@lang('site.image')</label>
                         <div class="image-input image-input-outline image-input-circle" id="kt_image_3">
                             <div class="image-input-wrapper" style="background-image: url({{URL::asset($subject->path_image)}})"></div>
                             <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
@@ -153,7 +153,7 @@
                     <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-warning btn-shadow-hover font-weight-bolder px-5 py-3 mx-auto">
                                 <i class="fa fa-edit"></i>
-                                Modifier
+                                @lang('site.update')
                             </button>
 
                     </div>

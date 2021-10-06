@@ -156,12 +156,13 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, student $student)
     {
+        
         //dd($request->all());
         $data_user=$request->except(['image','password_confirmation','gender','phone','address','_token','_method']);
-
+        //dd($student->user->image);
          //dd($data_user);
          if($request->image){
-            if($student->user->image != 'default.png'){
+            if($student->user->image != 'default.jpg'){
                // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
                 Storage::disk('public_upload')->delete('/user-images/'.$student->user->image);
             }

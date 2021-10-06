@@ -144,12 +144,12 @@
                                 <a href="#" class="btn btn-icon btn-circle btn-sm btn-light-primary mr-1" data-card-tool="toggle">
                                     <i class="ki ki-arrow-down icon-nm"></i>
                                 </a>
-                                @permission('subjects-update')
-                                <a href="#" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload">
+                                @permission('books-update')
+                                <a href="{{route('dashboard.book.edit',$book->id)}}" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" >
                                     <i class="ki ki-gear icon-nm"></i>
                                 </a>
                                 @endpermission
-                                @permission('subjects-delete')
+                                @permission('books-delete')
                                 <button class="btn btn-icon btn-circle btn-sm btn-light-danger" data-toggle="modal" data-target="#Delete_Book{{ $book->id }}" title="Supprimer book" >
                                     <i class="ki ki-close icon-nm"></i>
                                 </button>
@@ -162,10 +162,8 @@
                             <!--begin::Wrapper-->
                             <div class="d-flex justify-content-between flex-column h-100">
                                 <!--begin::Container-->
-
                                         <!--begin::Image-->
                                         <div class="bgi-no-repeat bgi-size-cover rounded min-h-250px w-100 mb-4 " style="background-image: url({{ $book->path_image }});background-position:center center;">
-
                                 </div>
                             </div>
                             <!--end::Wrapper-->

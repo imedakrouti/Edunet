@@ -68,7 +68,10 @@ class SubjectController extends Controller
         elseif( auth::user()->teacher){
 
             $teacher=auth::user()->teacher;
-            $subjects=$teacher->subjects;
+            //$subjects=$teacher->subjects;
+            //dd($subjects);
+            $subjects=$teacher->subjects()->latest()->paginate(4);
+            //dd($subjects->count());
         }
         else {
             # code...
@@ -178,8 +181,6 @@ class SubjectController extends Controller
      */
     public function update(SubjectRequest $request, Subject $subject)
     {
-
-
         $data_user=$request->except(['image']);
         // dd($data_user);
         if($request->image){

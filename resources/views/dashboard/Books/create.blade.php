@@ -182,12 +182,18 @@
                     </div>
                     <div class="form-group">
                         <label class="font-size-h6 font-weight-bolder text-dark d-block">@lang('site.subject')</label>
-							<select class="form-control border-0 form-control-solid text-muted font-size-lg font-weight-bolder pl-5 min-h-50px" name="subject_id" id="exampleSelects">
+							<select class="form-control border-0 form-control-solid text-muted font-size-lg font-weight-bolder pl-5 min-h-50px @error('subject_id') is-invalid @enderror" name="subject_id" id="exampleSelects"required >
 							<option>@lang('site.select') @lang('site.subject')</option>
                             @foreach($subjects as $subject)
                                 <option value="{{$subject->id}}"{{old('subject_id')==$subject->id ? 'selected' : ''}}>{{$subject->title}}</option>
                             @endforeach
 							</select>
+                            @error('subject_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
 							</div>
                     <div class="form-group">
                         <label class="font-size-h6 font-weight-bolder text-dark"> @lang('site.book') </label>

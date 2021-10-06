@@ -30,8 +30,6 @@
 </style>
 @stop
 @section('content')
-
-
         <!--begin::Subheader-->
         @section('Subheader')
         <div class="subheader py-2 py-lg-4" id="kt_subheader">

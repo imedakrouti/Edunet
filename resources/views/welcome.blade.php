@@ -13,7 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #324586;
+                
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -50,7 +51,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ffff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -65,7 +66,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height"style="background-image: url({{asset('admin/assets/media/bg/motif-bg.png')}});">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -82,10 +83,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <img src="{{asset('admin/assets/media/logos/edukinib.png')}}" class="max-h-75px" height="40px" alt="" />
                 </div>
 
-                <div class="links">
+               {{--  <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -94,7 +95,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
         </div>
       {{--   @include('sweetalert::alert') --}}

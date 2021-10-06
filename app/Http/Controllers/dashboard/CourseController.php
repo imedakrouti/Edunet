@@ -131,7 +131,8 @@ class CourseController extends Controller
      */
     public function edit(course $course)
     {
-        //
+        $subjects=subject::all();
+        return view('dashboard.courses.edit',compact('subjects','course'));
     }
 
     /**
@@ -143,8 +144,56 @@ class CourseController extends Controller
      */
     public function update(Request $request, course $course)
     {
-        //toast(__('site.updated_successfully'), 'success')
-    }
+        //dd($course->teacher->id);
+        $request->validate([
+            'title'         =>'required|string|min:4',
+            'description'   =>'required|string|min:7',
+            'image'         =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+             /* 'course'       =>'required', */
+            'subject_id'    =>'required',
+        ]);
+           /*  dd($request->all()); */
+        $data_course=$request->except(['image','profile_avatar_remove','course','_token','_method']);
+        //dd($request->all());
+        if($request->image){
+           if($course->image != 'default.jpg'){
+              // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
+               Storage::disk('public_upload')->delete('uploads/courses'.$course->image);
+           }
+           Image::make($request->image)->resize(300, null, function ($constraint) {
+               $constraint->aspectRatio();
+        })->save(public_path('uploads/courses/'.$request->image->hashName()));
+        $data_course['image']=$request->image->hashName();
+       }
+       if($request->hasfile('course')) {
+        Storage::disk('public_upload')->delete('/courses/'.$course->course);
+          $path="uploads/courses";
+           //1. get file extension
+          $file_extension = $request->course -> getClientOriginalExtension();
+          //2 add time to differnet each image from athor
+          $file_name = time().'.'.$file_extension;
+
+         $request->course -> move($path,$file_name);
+          // $file_name= $this->saveImage($request->image,$path);
+          //dd($file_name);
+          $data_course['course']=$file_name;
+          $mime = $request->course->getClientMimeType();
+          if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv")
+              {
+                  $data_course['type']='video';
+              }
+          else
+          $data_course['type']='writable';
+          
+       }
+       //dd($data_course);
+      // $data_course['teacher_id']=$teacher->id;
+       $course->update($data_course);
+       toast(__('site.updated_successfully'), 'success');
+       return redirect()->route('dashboard.course.index');
+  }
+      
+    
 
     /**
      * Remove the specified resource from storage.

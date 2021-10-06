@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head><base href="../../../../">
 		<meta charset="utf-8" />
-		<title>SignUp | Naja7ni</title>
+		<title>SignUp | Edukini</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	{{--  	<link rel="canonical" href="https://keenthemes.com/metronic" />  --}}
@@ -119,7 +119,49 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="{{asset('admin/assets/css/themes/layout/aside/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="{{asset('admin/assets/media/svg/avatars/student.svg')}}" />
-	</head>
+        <style>
+             .select2-container--default .select2-selection--multiple{
+                background-color: #F3F6F9 !important;
+                border-color: #F3F6F9 !important;
+                border-top-right-radius:0px !important;
+                border-bottom-right-radius:0px !important;
+                border-radius:none !important;
+                color: #3F4254 !important;
+                /* border-radius: 0.85rem !important; */
+                height: 50px !important;
+               
+                font-weight: 400 !important;
+                line-height: 1.5 !important;
+            }
+        
+            .select2-container .select2-selection--multiple {
+            display: block;
+           
+            /* min-height: 55px !important; */
+            }
+            .select2-container--default .select2-search--inline .select2-search__field{
+                width:100% !important;
+                font-size: 1.175rem !important;
+
+            }
+        
+        
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+            background: #c7cecd !important;
+            } 
+            .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice{
+                margin:0.4rem 0 0.1rem 0.4rem !important;
+            }
+            
+            .matiere .input-group-text{
+                border-top-left-radius:0px !important;
+                border-bottom-left-radius:0px !important;
+            }
+            .matiere{
+               
+            }
+        </style>
+        </head>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
@@ -142,8 +184,9 @@ License: You must have a valid license purchased only from themeforest(the above
 								<h3 class="font-weight-normal text-light">@lang('site.login')</h3>
 								<p class="text-muted font-weight-bold font-size-h4">@lang('site.login_detail')</p>
 							</div>
-							<form class="form" id="kt_login_signin_form" action="{{route('login')}} "method="post">
+                            <form method="POST" action="{{route('registeruser')}}"enctype="multipart/form-data">
                                 @csrf
+                                @method('post')
 								<div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -236,6 +279,42 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                     @enderror
                                 </div>
+                               {{--  <div class="form-group">
+                                    <div class="col-9 col-form-label">
+                                        <div class="radio-inline">
+                                            <label class="radio radio-outline radio-outline-2x radio-primary font-size-h6 font-weight-bolder text-light">
+                                                <input type="radio" name="type" @error('type') is-invalid @enderror checked="checked" value="student" {{ (old('type') == 'student') ? 'checked' : '' }}/>
+                                                <span></span>
+                                                @lang('site.student')
+                                            </label>
+                                            <label class="radio radio-outline radio-outline-2x radio-primary font-size-h6 font-weight-bolder text-light">
+                                                <input type="radio" name="type" @error('type') is-invalid @enderror value="teacher" {{ (old('gender') == 'teacher') ? 'checked' : '' }}/>
+                                                <span></span>
+                                                @lang('site.teacher')
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+                                </div> --}}
+                                
+                              {{--   <div class="form-group d-flex matiere">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-book"></i>
+                                        </span>
+                                    </div>
+                                    <select name="matieres[]" class="form-control form-control-solid h-auto py-4 px-6  font-size-h6 select @error('matieres') is-invalid @enderror"  multiple>
+                                      @foreach ($matieres as $matiere)
+                                      <option value="{{ $matiere->id}}">{{ $matiere->title }}</option>
+                                  @endforeach
+                                  </select>
+                                  @error('matieres')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                                  @enderror
+                                  </div> --}}
                                 <div class="form-group  ">
                                     <div class="form-group ">
                                         <div class="input-group">
@@ -359,9 +438,24 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{asset('admin/assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('admin/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 		<script src="{{asset('admin/assets/js/scripts.bundle.js')}}"></script>
+        <script src="{{ asset('admin/assets/js/pages/crud/forms/widgets/select2.js')}}"></script>
         <script src="{{asset('admin/assets/js/pages/crud/file-upload/image-input.js')}}"></script>
 <!--end::Page Scripts-->
-
+<script>
+    $(document).ready(function(){
+    $('input[name="type"]').click(function(){
+        var inputValue = $(this).attr("value");
+        if (inputValue=='teacher'){
+              $('.matiere').hide(); 
+              console.log("imed");
+        }
+        console.log(inputValue);
+       /*  var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide();*/
+        
+    });
+});
+</script>
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
 {{-- 		<script src="{{asset('admin/assets/js/pages/custom/login/login-general.js')}}"></script>

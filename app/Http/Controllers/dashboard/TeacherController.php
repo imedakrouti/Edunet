@@ -128,7 +128,7 @@ class TeacherController extends Controller
          //dd($data_user);
 
          if($request->image){
-            if($teacher->user->image != 'default.png'){
+            if($teacher->user->image != 'default.jpg'){
                // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
                 Storage::disk('public_upload')->delete('/user-images/'.$teacher->user->image);
             }

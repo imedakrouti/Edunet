@@ -178,7 +178,7 @@
                                     <i class="ki ki-arrow-down icon-nm"></i>
                                 </a>
                                 @permission('tasks-update')
-                                <a href="#" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload">
+                                <a href="{{route('dashboard.task.edit',$task->id)}}" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1">
                                     <i class="ki ki-gear icon-nm"></i>
                                 </a>
                                 @endpermission

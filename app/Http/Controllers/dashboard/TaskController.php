@@ -124,7 +124,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $subjects=subject::all();
+        return view('dashboard.tasks.edit',compact('subjects','task'));
     }
 
     /**
@@ -136,8 +137,52 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
-        //toast(__('site.updated_successfully'), 'success');
+        $request->validate([
+            'title'         =>'required|string|min:4',
+            'description'   =>'required|string|min:7',
+            'image'         =>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+             /* 'task'       =>'required', */
+            'subject_id'    =>'required',
+        ]);
+           /*  dd($request->all()); */
+        $data_task=$request->except(['image','profile_avatar_remove','task','_token','_method']);
+        //dd($request->all());
+        if($request->image){
+           if($task->image != 'default.jpg'){
+              // Storage::disk('public_upload')->delete('/user-images/' . $request->image);
+               Storage::disk('public_upload')->delete('uploads/tasks'.$task->image);
+           }
+           Image::make($request->image)->resize(300, null, function ($constraint) {
+               $constraint->aspectRatio();
+        })->save(public_path('uploads/tasks/'.$request->image->hashName()));
+        $data_task['image']=$request->image->hashName();
+       }
+       if($request->hasfile('task')) {
+        Storage::disk('public_upload')->delete('/tasks/'.$task->task);
+          $path="uploads/tasks";
+           //1. get file extension
+          $file_extension = $request->task -> getClientOriginalExtension();
+          //2 add time to differnet each image from athor
+          $file_name = time().'.'.$file_extension;
+
+         $request->task -> move($path,$file_name);
+          // $file_name= $this->saveImage($request->image,$path);
+          //dd($file_name);
+          $data_task['task']=$file_name;
+          $mime = $request->task->getClientMimeType();
+          if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv")
+              {
+                  $data_task['type']='video';
+              }
+          else
+          $data_task['type']='writable';
+          
+       }
+       //dd($data_task);
+      // $data_task['teacher_id']=$teacher->id;
+       $task->update($data_task);
+       toast(__('site.updated_successfully'), 'success');
+       return redirect()->route('dashboard.task.index');
 
     }
 
